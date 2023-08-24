@@ -5,11 +5,6 @@
   text-align: center;
 }
 
-.language-container {
-  display: flex;
-  gap: 20px;
-}
-
 .textbox-container {
   display: flex;
   justify-content: center;
@@ -17,12 +12,15 @@
   width: 800px;
 }
 
-.textbox-container>textarea, .language-selector {
-  width: 50%;
+.textbox-container-labels {
+  display: flex;
+  justify-content: center;
+  gap: 400px;
+  width: 800px;
 }
 
-.language-selector>select {
-  width: 150px;
+.textbox-container>textarea {
+  width: 70%;
 }
 
 .progress-container {
