@@ -7,12 +7,23 @@ function App() {
   const [textInput, setTextInput] = useState('enter some text');
   const [responseText, setResponseText] = useState('see the results');
 
+  const [fileContents, setFileContents] = useState('');
+
   const handleInputChange = (event) => {
     setTextInput(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    
+    fetch('http://44.205.71.6:3000/')
+    .then(response => response.text())
+    .then(data => setFileContents(data))
+    .catch(error => console.error('Error fetching data:', error));
+    console.log("FILECONTENTS")
+    console.log(fileContents)
+
     const URL = "https://us-central1-aiplatform.googleapis.com/v1/projects/14033224277/locations/us-central1/endpoints/3075538532052238336:predict"
     const predjson = {"instances": [{
       "mimeType": "text/plain",
@@ -22,7 +33,7 @@ function App() {
       const response = await fetch(URL, {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer ya29.a0AfB_byCZFBfYhea9Zo9n8nWDT-j4wrmxha2XigKuRvOzXzL3zSIU4QnU7pNQcB_eGNmsl0MaU_su8nxyoCig22UUYHbdCgc7trqVz8mVV_oEZvWilR7fR6dnS1DMSNck95gdX-meDt7e4TOQI-PlBoni0ymWes7KHkAmCmwh-eH72eIaCgYKASESARASFQHsvYls5Wp2wyaCPDAXvkxgaFDT8A0182',
+          'Authorization': 'Bearer ya29.a0AfB_byBNwAJTIoTZb7QDS055VdjSceLHMfbB2boNrMnfu_sfXPbxQwOafPGgOLx4RH0_YlXL2832xM2deOsN7gc9Bj-bzNa2Mv4ve9Pc_D-yQB7xytEUmz1sBJ2Y2_2TIX_Rlhm0Z0eorUNqXp0JCVjh-bBWDa8hHrWt9dGVyOHnoUcaCgYKAbESARASFQHsvYlsSRxkXb1BesY-3LFqKoz5Hw0182',
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify(predjson),
