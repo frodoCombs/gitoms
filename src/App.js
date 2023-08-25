@@ -13,15 +13,26 @@ function App() {
     setTextInput(event.target.value);
   };
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://44.205.71.6:3000/', {mode:'cors'});
+      const data = await response.text();
+      setFileContents(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
   const handleSubmit = async (event) => {
-    event.preventDefault();
-
+    event.preventDefault();    
+    // fetch('http://44.205.71.6:3000/', {mode:'cors'})
+    // .then(response => response.text())
+    // .then(data => setFileContents(data))
+    // .catch(error => console.error('Error fetching data:', error));
+    // // console.log("FILECONTENTS")
     
-    fetch('http://44.205.71.6:3000/', {mode:'cors'})
-    .then(response => response.text())
-    .then(data => setFileContents(data))
-    .catch(error => console.error('Error fetching data:', error));
-    // console.log("FILECONTENTS")
+    // Fetch the initial data
+    await fetchData();
     console.log('Bearer ' + fileContents)
 
     const URL = "https://us-central1-aiplatform.googleapis.com/v1/projects/14033224277/locations/us-central1/endpoints/3075538532052238336:predict"
