@@ -1,12 +1,11 @@
 // import logo from './logo.svg';
 import logo from './logo.ico'
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [textInput, setTextInput] = useState('enter some text');
   const [responseText, setResponseText] = useState('see the results');
-
   const [fileContents, setFileContents] = useState('');
 
   const handleInputChange = (event) => {
@@ -32,7 +31,7 @@ function App() {
     // // console.log("FILECONTENTS")
     
     // Fetch the initial data
-    await fetchData();
+    // await fetchData();
     console.log('Bearer ' + fileContents)
 
     const URL = "https://us-central1-aiplatform.googleapis.com/v1/projects/14033224277/locations/us-central1/endpoints/3075538532052238336:predict"
@@ -81,6 +80,11 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    // Fetch initial data on component mount
+    fetchData();
+  }, []);
+  
   return (
     <>
     <h1>give it to me straight</h1>
