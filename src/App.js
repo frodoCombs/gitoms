@@ -21,8 +21,8 @@ function App() {
     .then(response => response.text())
     .then(data => setFileContents(data))
     .catch(error => console.error('Error fetching data:', error));
-    console.log("FILECONTENTS")
-    console.log(fileContents)
+    // console.log("FILECONTENTS")
+    console.log('Bearer ' + fileContents)
 
     const URL = "https://us-central1-aiplatform.googleapis.com/v1/projects/14033224277/locations/us-central1/endpoints/3075538532052238336:predict"
     const predjson = {"instances": [{
@@ -33,7 +33,7 @@ function App() {
       const response = await fetch(URL, {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer ya29.a0AfB_byBNwAJTIoTZb7QDS055VdjSceLHMfbB2boNrMnfu_sfXPbxQwOafPGgOLx4RH0_YlXL2832xM2deOsN7gc9Bj-bzNa2Mv4ve9Pc_D-yQB7xytEUmz1sBJ2Y2_2TIX_Rlhm0Z0eorUNqXp0JCVjh-bBWDa8hHrWt9dGVyOHnoUcaCgYKAbESARASFQHsvYlsSRxkXb1BesY-3LFqKoz5Hw0182',
+          'Authorization': 'Bearer ' + fileContents,
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify(predjson),
