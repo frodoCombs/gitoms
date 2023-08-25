@@ -17,7 +17,7 @@ function App() {
     event.preventDefault();
 
     
-    fetch('http://44.205.71.6:3000/')
+    fetch('http://44.205.71.6:3000/', {mode:'cors'})
     .then(response => response.text())
     .then(data => setFileContents(data))
     .catch(error => console.error('Error fetching data:', error));
