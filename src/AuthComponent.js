@@ -56,19 +56,29 @@ export default function AuthComponent() {
         let responseOutput = '';
         let responseMessage = '';
         if (a > b) {
-          if (a > 0.85){
-            responseMessage = "This is very biased to the "
+          if (a > 0.95){
+            responseMessage = "This is very biased to the ";
+            responseOutput = responseData.predictions[0].displayNames[0];
+          } else if ( a > 0.85){
+            responseMessage = "This is biased to the ";
+            responseOutput = responseData.predictions[0].displayNames[0];
           } else {
-            responseMessage = "This is biased to the "
+            responseMessage = "This is not very biased ";
+            responseOutput = " ";
           }
-          responseOutput = responseData.predictions[0].displayNames[0];
+          
         } else {
-          if (b > 0.85){
-            responseMessage = "This is very biased to the "
-          } else {
-            responseMessage = "This is biased to the "
+          if (b > 0.95){
+            responseMessage = "This is very biased to the ";
+            responseOutput = responseData.predictions[0].displayNames[1];
+          } else if ( b > 0.85){
+            responseMessage = "This is biased to the ";
+            responseOutput = responseData.predictions[0].displayNames[1];
           }
-          responseOutput = responseData.predictions[0].displayNames[1];
+          else {
+            responseMessage = "This is not very biased ";
+            responseOutput = " ";
+          }
         }
         setResponseText(responseMessage+responseOutput);
       } else {
