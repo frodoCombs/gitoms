@@ -17,7 +17,7 @@ export default function Login() {
     // set configurations
     const configuration = {
       method: "post",
-      url: "https://nodejs-mongodb-auth-app.herokuapp.com/login",
+      url : "https://auth-backend-server-0de28050f40a.herokuapp.com/login",
       data: {
         email,
         password,
@@ -43,7 +43,7 @@ export default function Login() {
 
   return (
     <>
-      <h2>Login</h2>
+      <h2>login</h2>
       <Form onSubmit={(e) => handleSubmit(e)}>
         {/* email */}
         <Form.Group controlId="formBasicEmail">
@@ -80,9 +80,10 @@ export default function Login() {
 
         {/* display success message */}
         {login ? (
-          <p className="text-success">You Are Logged in Successfully</p>
+          <p className="text-success">you are logged in successfully</p>
         ) : (
-          <p className="text-danger">You Are Not Logged in</p>
+          <p className="text-danger">you are not logged in<br></br>
+          you must be logged in to access gitoms</p>
         )}
       </Form>
     </>

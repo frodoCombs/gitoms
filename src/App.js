@@ -9,13 +9,18 @@ function App() {
   return (
     <Container>
       <Row>
+        <Col>
+          <br></br>
+        </Col>
+      </Row>
+      <Row>
         <Col className="text-center">
-          <h1>React Authentication Tutorial</h1>
-
+          <h1>give it to me straight</h1>
+        
           <section id="navigation">
-            <a href="/">Home</a>
-            <a href="/free">Free Component</a>
-            <a href="/auth">Auth Component</a>
+            <a href="/">home</a>
+            <a href="/free">about</a>
+            <a href="/auth">gitoms</a>
           </section>
         </Col>
       </Row>
